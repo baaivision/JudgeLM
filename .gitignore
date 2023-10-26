@@ -1,0 +1,35 @@
+# Python
+__pycache__
+*.pyc
+*.egg-info
+dist
+.venv
+
+# Log
+*.log
+*.log.*
+*.json
+
+# Editor
+.idea
+*.swp
+
+# Other
+.DS_Store
+wandb
+output
+checkpoints_flant5_3b
+/checkpoints_output
+/judgements_output
+/opensource_utils
+/judgelm/data
+/scripts/git_test
+
+# Data
+*.pkl
+*.csv
+/data/PandaData/
+
+# Build
+build
+
