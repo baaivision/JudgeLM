@@ -1,7 +1,7 @@
 # JudgeLM: Fine-tuned Large Language Models are Scalable Judges
 
 
-<a target="_blank" href="https://https://github.com/baaivision/JudgeLM">
+<a target="_blank" href="https://arxiv.org/abs/2310.17631">
 <img style="height:22pt" src="https://img.shields.io/badge/-Paper-black?style=flat&logo=arxiv">
 </a>
 <a target="_blank" href="https://https://github.com/baaivision/JudgeLM">
@@ -33,7 +33,7 @@ multiple answers, and multi-turn chat)
 - A distributed multi-model serving system with web UI.
 
 ## News
-- [2023/10] We released **JudgeLM: Fine-tuned Large Language Models are Scalable Judges**. Check out the [paper](https://todo).
+- [2023/10] We released **JudgeLM: Fine-tuned Large Language Models are Scalable Judges**. Check out the [paper](https://arxiv.org/abs/2310.17631).
 
 
 ## Contents
@@ -54,7 +54,7 @@ cd JudgeLM
 
 2. Install Package
 ```bash
-conda create -n judgelm python=3.8 -y
+conda create -n judgelm python=3.10.10 -y
 conda activate judgelm
 pip3 install --upgrade pip 
 pip3 install -e .
@@ -120,9 +120,9 @@ torchrun --nproc_per_node=4 --master_port=20001 judgelm/train/train_mem.py \
     --bf16 True \
     --output_dir="/home/zhulianghui/ProjectC_ChatGPT/alpaca/output/judgelm-debug-evaluator" \
     --num_train_epochs 3 \
-    --per_device_train_batch_size 32 \
-    --per_device_eval_batch_size 32 \
-    --gradient_accumulation_steps 1 \
+    --per_device_train_batch_size 1 \
+    --per_device_eval_batch_size 1 \
+    --gradient_accumulation_steps 32 \
     --evaluation_strategy no \
     --save_strategy steps \
     --save_steps 1000 \
@@ -156,5 +156,12 @@ The code (training, serving, and evaluation) in this repository is mostly develo
 Please cite it if you find the repository helpful.
 
 ```
-Citation will be updated soon... 
+@article{zhu2023judgelm,
+      title={JudgeLM: Fine-tuned Large Language Models are Scalable Judges}, 
+      author={Lianghui Zhu and Xinggang Wang and Xinlong Wang},
+      year={2023},
+      eprint={2310.17631},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
