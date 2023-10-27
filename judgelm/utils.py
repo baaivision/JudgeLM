@@ -21,25 +21,17 @@ visited_loggers = set()
 
 def extract_jsonl(file_path):
     data_list = []
-    # Open the JSONL file
     with open(file_path, 'r') as file:
-        # Iterate through each line in the file
         for line in file:
-            # Parse the line as a JSON object
             data = json.loads(line)
-            # You can now work with the JSON object (e.g., print it, extract data from it, etc.)
             data_list.append(data)
 
     return data_list
 
 def save_jsonl(data_list, file_path):
-    # 以写入模式打开文件
     with open(file_path, 'w') as file:
-        # 遍历列表中的每个元素
         for item in data_list:
-            # 将元素转换为JSON字符串
             json_str = json.dumps(item)
-            # 将JSON字符串写入文件的新行
             file.write(json_str + '\n')
 
 def build_logger(logger_name, logger_filename):

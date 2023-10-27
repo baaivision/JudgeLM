@@ -460,26 +460,18 @@ def train():
         trainer.train()
     model.config.use_cache = True
     trainer.save_state()
-    # wait 一段时间
+
     import time
     time.sleep(100)
 
-    # todo: debug
     if training_args.deepspeed is not None:
         trainer.save_model(output_dir=training_args.output_dir)
-        # wait 一段时间
-        import time
         time.sleep(100)
-        # fp32 saving
-        # trainer.deepspeed.save_checkpoint(training_args.output_dir)
-        # fp16 saving
         WEIGHTS_NAME = "pytorch_model.bin"
         trainer.deepspeed.save_16bit_model(training_args.output_dir, WEIGHTS_NAME)
     else:
         safe_save_model_for_hf_trainer(trainer=trainer, output_dir=training_args.output_dir)
 
-    # wait 一段时间
-    import time
     time.sleep(100)
 
     if trainer.is_world_process_zero():

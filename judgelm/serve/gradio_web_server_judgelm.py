@@ -184,19 +184,6 @@ def load_demo_single_v2(models, url_params):
     )
 
     state = None
-    # return (
-    #     state,
-    #     dropdown_update,
-    #     gr.Chatbot.update(visible=True),
-    #     gr.Textbox.update(visible=True),
-    #     gr.Button.update(visible=True),
-    #     gr.Row.update(visible=True),
-    #     gr.Accordion.update(visible=True),
-    #     gr.Textbox.update(visible=True),
-    #     gr.Textbox.update(visible=True),
-    #     gr.Textbox.update(visible=True),
-    #     gr.Button.update(visible=True),
-    # )
 
 
 def load_demo_v2(url_params, request: gr.Request):

@@ -142,23 +142,14 @@ def calculate_metrics(gt_answer_file_path, sequential_pred_answer_file_path, rev
 if __name__ == '__main__':
     # gt w/o ref
     gt_answer_file_path = "/share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgelm/data/JudgeLM/judgelm_val_5k_gpt4.jsonl"
-    # gt_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca-quan/eval/table/review_output_test_0627_gpt4_1st_5000_val_mix_instruct.jsonl"
     # gt w/ ref
     # gt_answer_file_path = "/share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgelm/data/JudgeLM/judgelm_val_5k_gpt4_with_reference.jsonl"
 
     # 33b 100k full model lr 3e-5
-    sequential_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-33b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr3e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627"
-    sequential_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-7b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr2e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627"
-    sequential_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-33b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr1e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627"
-    sequential_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-33b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr1e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627-reference"
     sequential_pred_answer_file_path = "/share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgements_output/JudgeLM/7b-full-model-pycharm-debug-v2"
     #
     # 33b 100k full model lr 3e-5
-    reversed_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-33b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr3e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627-reverse"
-    reversed_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-7b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr2e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627-reverse"
-    reversed_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-33b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr1e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627-reverse"
-    reversed_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/FastChat/vicuna-33b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr1e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref-drop-ratio0.5-val-data-prepared-sampled-0627-reverse-reference"
-    reversed_pred_answer_file_path = "/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/JudgeLM/judgements_output/JudgeLM/7b-full-model-pycharm-debug-reverse-v2"
+    reversed_pred_answer_file_path = "/share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgements_output/JudgeLM/7b-full-model-pycharm-debug-reverse-v2"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--gt-answer-file-path", type=str, default=gt_answer_file_path)

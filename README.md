@@ -7,11 +7,26 @@
 <a target="_blank" href="https://https://github.com/baaivision/JudgeLM">
 <img style="height:22pt" src="https://img.shields.io/badge/-Code-green?style=flat&logo=github">
 </a>
+<a target="_blank" href="http://218.91.113.230:9004/">
+<img style="height:22pt" src="https://img.shields.io/badge/🤖 Demo-20B2AA?style=flat">
+</a>
+<a target="_blank" href="https://huggingface.co/datasets/BAAI/JudgeLM-100K">
+<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Dataset-red?style=flat">
+</a>
+<a target="_blank" href="https://huggingface.co/BAAI/JudgeLM-7B-v1.0">
+<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Models (7B)-red?style=flat">
+</a>
+<a target="_blank" href="https://huggingface.co/BAAI/JudgeLM-13B-v1.0">
+<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Models (13B)-red?style=flat">
+</a>
+<a target="_blank" href="https://twitter.com/_akhaliq/status/1717718525958037799?s=61&t=Q73fac6D7gyJgMBfcxgPvA">
+<img style="height:22pt" src="https://img.shields.io/badge/-Tweet-blue?style=flat&logo=twitter">
+</a>
 <br>
 
-[Lianghui Zhu](https://github.com/Unrealluver)<sup>1,2</sup>, [Xinggang Wang](https://xwcv.github.io/)<sup>2</sup>, [Xinlong Wang](https://www.xloong.wang/)<sup>1</sup>
+[Lianghui Zhu](https://github.com/Unrealluver)<sup>1,2</sup>, [Xinggang Wang](https://xwcv.github.io/)<sup>1</sup>, [Xinlong Wang](https://www.xloong.wang/)<sup>2</sup>
  
-<sup>1</sup>[BAAI](https://www.baai.ac.cn/english.html), <sup>2</sup>[HUST](https://english.hust.edu.cn/)
+<sup>1</sup>[HUST](https://english.hust.edu.cn/), <sup>2</sup>[BAAI](https://www.baai.ac.cn/english.html)
  
 
 ## Overview
@@ -24,7 +39,7 @@ Evaluating Large Language Models (LLMs) in open-ended scenarios is challenging b
 
 JudgeLM is an open platform for training, serving, and evaluating scalable large language model judges.
 - JudgeLM is a scalable language model judge, designed for evaluating LLMs in open-ended scenarios. It achieves an agreement exceeding 90\% that surpasses the human-to-human agreement.
-- JudgeLM dataset contains 100K judge samples for training and 5K judge samples for validating. All the judge samples have the GPT-4-generated high-quality judgements.
+- JudgeLM dataset contains 100K judge samples for training and 5K judge samples for validation. All the judge samples have the GPT-4-generated high-quality judgements.
 
 JudgeLM's core features include:
 - The training and evaluation code for state-of-the-art LLM judges. 
@@ -63,16 +78,16 @@ pip install flash-attn==2.0.4 --no-build-isolation
 
 ## Model Weights
 JudgeLM is based on LLaMA and should be used under LLaMA's [model license](https://github.com/facebookresearch/llama/blob/main/LICENSE).
-The weights will be updated soon...
+The weight of JudgeLM-33B will be updated soon...
 
-|                          Model                          | w/ reference? | Agreement↑ | Precision↑ | Recall↑ |  F1↑  | Consistency↑ |
-|:-------------------------------------------------------:|:-------------:|:----------:|:----------:|:-------:|:-----:|:------------:|
-|   **JudgeLM-7B**   |       ❎       |   81.11    |   69.67    |  78.39  | 72.21 |    83.57     |
-|   **JudgeLM-7B**   |       ✅       |   84.08    |   75.92    |  82.55  | 78.28 |    84.46     |
-|  **JudgeLM-13B**   |       ❎       |   84.33    |   73.69    |  80.51  | 76.17 |    85.01     |
-|  **JudgeLM-13B**   |       ✅       |   85.47    |   77.71    |  82.90  | 79.77 |    87.23     |
-| **JudgeLM-33B** 🔥 |       ❎       |   89.03    |   80.97    |  84.76  | 82.64 |    91.36     |
-| **JudgeLM-33B** 🔥 |       ✅       |   89.32    |   84.00    |  86.21  | 84.98 |    92.37     |
+|                                                    Model                                                    | w/ reference? | Agreement↑ | Precision↑ | Recall↑ |  F1↑  | Consistency↑ |
+|:-----------------------------------------------------------------------------------------------------------:|:-------------:|:----------:|:----------:|:-------:|:-----:|:------------:|
+|                        [**JudgeLM-7B**](https://huggingface.co/BAAI/JudgeLM-7B-v1.0)                        |       ❎       |   81.11    |   69.67    |  78.39  | 72.21 |    83.57     |
+|                        [**JudgeLM-7B**](https://huggingface.co/BAAI/JudgeLM-7B-v1.0)                        |       ✅       |   84.08    |   75.92    |  82.55  | 78.28 |    84.46     |
+|                       [**JudgeLM-13B**](https://huggingface.co/BAAI/JudgeLM-13B-v1.0)                       |       ❎       |   84.33    |   73.69    |  80.51  | 76.17 |    85.01     |
+|                       [**JudgeLM-13B**](https://huggingface.co/BAAI/JudgeLM-13B-v1.0)                       |       ✅       |   85.47    |   77.71    |  82.90  | 79.77 |    87.23     |
+|                                             **JudgeLM-33B** 🔥                                              |       ❎       |   89.03    |   80.97    |  84.76  | 82.64 |    91.36     |
+|                                             **JudgeLM-33B** 🔥                                              |       ✅       |   89.32    |   84.00    |  86.21  | 84.98 |    92.37     |
 
 
 
@@ -94,12 +109,14 @@ See instructions for running JudgeLM at [judgelm/llm_judge](judgelm/llm_judge).
 ![gradio](./assets/gradio_v1.1.png)
 
 We use gradio to provide web server and UI for users to evaluate LLMs' performence at open-ended tasks.
+The demo can be tried [here](http://218.91.113.230:9004/).
+
 See instructions for running JudgeLM web server at [judgelm/serve](judgelm/serve).
 
 ## Fine-tuning
 ### Data
 
-Data will be released soon...
+The JudgeLM-100K dataset is available at [HuggingFace Datasets](https://huggingface.co/datasets/BAAI/JudgeLM-100K).
 
 ### Code and Hyperparameters
 Our code is based on [Vicuna](https://github.com/lm-sys/FastChat) with additional support for judging answer pairs.

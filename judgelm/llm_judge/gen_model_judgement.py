@@ -258,12 +258,7 @@ if __name__ == "__main__":
         ray.init(num_cpus=int(args.num_gpus_total / args.num_gpus_per_model), runtime_env={"working_dir": str(root)})
 
     print(f"Output to {args.answer_file}")
-    # print(sys.path)
-    # # print current path
-    # print(os.getcwd())
-    # reorg_answer_file(args.answer_file)
-    # sys.exit()
-
+    
     run_eval(
         args.model_path,
         args.model_id,
