@@ -467,17 +467,16 @@ def train():
     if training_args.deepspeed is not None:
         trainer.save_model(output_dir=training_args.output_dir)
         time.sleep(100)
-        WEIGHTS_NAME = "pytorch_model.bin"
-        trainer.deepspeed.save_16bit_model(training_args.output_dir, WEIGHTS_NAME)
+        trainer.deepspeed.save_16bit_model(training_args.output_dir, "pytorch_model.bin")
     else:
         safe_save_model_for_hf_trainer(trainer=trainer, output_dir=training_args.output_dir)
 
     time.sleep(100)
 
     if trainer.is_world_process_zero():
-        print("Saving tokenizer...")
+        print("Trainer:")
         print(trainer)
-        print("Saving tokenizer...")
+        print("Training args:")
         print(training_args)
 
 

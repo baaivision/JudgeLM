@@ -17,7 +17,10 @@
 <img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Models (7B)-red?style=flat">
 </a>
 <a target="_blank" href="https://huggingface.co/BAAI/JudgeLM-13B-v1.0">
-<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20Models (13B)-red?style=flat">
+<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20(13B)-red?style=flat">
+</a>
+<a target="_blank" href="https://huggingface.co/BAAI/JudgeLM-33B-v1.0">
+<img style="height:22pt" src="https://img.shields.io/badge/-🤗%20(33B)-red?style=flat">
 </a>
 <a target="_blank" href="https://twitter.com/_akhaliq/status/1717718525958037799?s=61&t=Q73fac6D7gyJgMBfcxgPvA">
 <img style="height:22pt" src="https://img.shields.io/badge/-Tweet-blue?style=flat&logo=twitter">
@@ -78,16 +81,15 @@ pip install flash-attn==2.0.4 --no-build-isolation
 
 ## Model Weights
 JudgeLM is based on LLaMA and should be used under LLaMA's [model license](https://github.com/facebookresearch/llama/blob/main/LICENSE).
-The weight of JudgeLM-33B will be updated soon...
 
-|                                                    Model                                                    | w/ reference? | Agreement↑ | Precision↑ | Recall↑ |  F1↑  | Consistency↑ |
-|:-----------------------------------------------------------------------------------------------------------:|:-------------:|:----------:|:----------:|:-------:|:-----:|:------------:|
-|                        [**JudgeLM-7B**](https://huggingface.co/BAAI/JudgeLM-7B-v1.0)                        |       ❎       |   81.11    |   69.67    |  78.39  | 72.21 |    83.57     |
-|                        [**JudgeLM-7B**](https://huggingface.co/BAAI/JudgeLM-7B-v1.0)                        |       ✅       |   84.08    |   75.92    |  82.55  | 78.28 |    84.46     |
-|                       [**JudgeLM-13B**](https://huggingface.co/BAAI/JudgeLM-13B-v1.0)                       |       ❎       |   84.33    |   73.69    |  80.51  | 76.17 |    85.01     |
-|                       [**JudgeLM-13B**](https://huggingface.co/BAAI/JudgeLM-13B-v1.0)                       |       ✅       |   85.47    |   77.71    |  82.90  | 79.77 |    87.23     |
-|                                             **JudgeLM-33B** 🔥                                              |       ❎       |   89.03    |   80.97    |  84.76  | 82.64 |    91.36     |
-|                                             **JudgeLM-33B** 🔥                                              |       ✅       |   89.32    |   84.00    |  86.21  | 84.98 |    92.37     |
+|                               Model                                | w/ reference? | Agreement↑ | Precision↑ | Recall↑ |  F1↑  | Consistency↑ |
+|:------------------------------------------------------------------:|:-------------:|:----------:|:----------:|:-------:|:-----:|:------------:|
+|   [**JudgeLM-7B**](https://huggingface.co/BAAI/JudgeLM-7B-v1.0)    |       ❎       |   81.11    |   69.67    |  78.39  | 72.21 |    83.57     |
+|   [**JudgeLM-7B**](https://huggingface.co/BAAI/JudgeLM-7B-v1.0)    |       ✅       |   84.08    |   75.92    |  82.55  | 78.28 |    84.46     |
+|  [**JudgeLM-13B**](https://huggingface.co/BAAI/JudgeLM-13B-v1.0)   |       ❎       |   84.33    |   73.69    |  80.51  | 76.17 |    85.01     |
+|  [**JudgeLM-13B**](https://huggingface.co/BAAI/JudgeLM-13B-v1.0)   |       ✅       |   85.47    |   77.71    |  82.90  | 79.77 |    87.23     |
+| [**JudgeLM-33B** 🔥](https://huggingface.co/BAAI/JudgeLM-33B-v1.0) |       ❎       |   89.03    |   80.97    |  84.76  | 82.64 |    91.36     |
+|                       [**JudgeLM-33B** 🔥](https://huggingface.co/BAAI/JudgeLM-33B-v1.0)                       |       ✅       |   89.32    |   84.00    |  86.21  | 84.98 |    92.37     |
 
 
 
