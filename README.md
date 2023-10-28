@@ -108,7 +108,7 @@ See instructions for running JudgeLM at [judgelm/llm_judge](judgelm/llm_judge).
 
 ![gradio](./assets/gradio_v1.1.png)
 
-We use gradio to provide web server and UI for users to evaluate LLMs' performence at open-ended tasks.
+We use gradio to provide web server and UI for users to evaluate LLMs' performance at open-ended tasks.
 The demo can be tried [here](http://218.91.113.230:9004/).
 
 See instructions for running JudgeLM web server at [judgelm/serve](judgelm/serve).
