@@ -1,6 +1,12 @@
 # JudgeLM for different benchmarks
 
-JudgeLM presents a strong 0-shot ability to many 
+JudgeLM presents a strong 0-shot ability to many open-ended benchmarks.
+Now we support the following benchmarks:
+- JudgeLM val set
+- MM-Vet
+
+For simplicity of use, you can download our uploaded [dataset collection](https://huggingface.co/datasets/BAAI/JudgeLM-data-collection-v1.0),
+and put the contents in the `JudgeLM/judgelm/data` folder.
 
 [//]: # (## Enviorment)
 
