@@ -32,7 +32,7 @@ and put the contents in the `JudgeLM/judgelm/data` folder.
 
 ## Judge the Quality of LLMs-Generated Answer Pairs
 
-We provide scripts to judge the quality of LLMs-generated answer pairs. We first put the LLM-generated results json file in benchmark folder, and then preprocess for judge samples. Finally, we make judgements by JudgeLM. Furthermore, we provide a single script to run the whole process at last.
+We provide scripts to judge the quality of LLMs-generated answer pairs. We first put the LLM-generated results json file into benchmark folder, and then preprocess for judge samples. Finally, we make judgements by JudgeLM. Furthermore, we provide a single script to run the whole process at last.
 
 ### Judge on JudgeLM Benchmark Step by Step
 
@@ -122,6 +122,101 @@ python ./judgelm/llm_judge/gen_model_judgement.py \
 
 ```bash
 bash ./scripts/judge_on_judgelm_benchmark.sh 
+```
+
+## Grade the Single Answer
+Given a question and the corresponding reference answer, JudgeLM can grade the LLM-generated single answer. 
+We first put the LLM-generated results json file into benchmark folder, and then preprocess the reference answer file and the LLM-generated answer file. 
+Finally, we grade single answer by JudgeLM. Furthermore, we provide a single script to run the whole process at last.
+
+### Judge on JudgeLM Benchmark Step by Step
+
+#### Step 1. Put LLM-generated results json file in benchmark folder `./judgelm/data/JudgeLM/answers`, following the format of `./judgelm/data/JudgeLM/answers/alpaca_judgelm_val.jsonl`
+
+e.g.,
+
+```json
+{
+  "question_id": 0, 
+  "question_body": "My internet service is very expensive...", 
+  "decoding_method": "top_p_sampling", 
+  "model": "alpaca-native", 
+  "text": "There are a few ways to cut down the cost...", 
+  "scores": {"logprobs": -7.0179795026779175,...}
+}
+```
+
+Among the keys, `question_id`, `question_body`, `text` are required, and `decoding_method`, `model`, `scores` are optional (can be some placeholder).
+
+#### Step 2. Preprocess for judge samples
+
+
+```bash
+python ./judgelm/data/JudgeLM/judgelm_preprocess.py \
+--ans1_file_path [REFERENCE_ANSWER_FILE_PATH] \
+--ans2_file_path [ANS2_FILE_PATH]
+```
+
+Arguments:
+  - `[REFERENCE_ANSWER_FILE_PATH]` is the path to the reference answer file.
+  - `[ANS2_FILE_PATH]` is the path to the LLM-generated answer file.
+
+e.g.,
+
+```bash
+python ./judgelm/data/JudgeLM/judgelm_preprocess.py \
+--ans1_file_path /share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgelm/data/JudgeLM/answers/gt_judgelm_val.jsonl \
+--ans2_file_path /share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgelm/data/JudgeLM/answers/llama_judgelm_val.jsonl
+```
+
+After this, we can get judge samples like `./judgelm/data/JudgeLM/judgelm-val-5k-judge-samples.jsonl`
+
+#### Step 3. Make judgements by JudgeLM
+
+```bash
+python ./judgelm/llm_judge/gen_model_judgement_single.py \ 
+--model-path [MODEL_PATH] \
+--model-id [MODEL_ID] \
+--question-file ./judgelm/data/JudgeLM/judgelm-val-5k-judge-samples.jsonl \
+--answer-file [ANSWER_FILE_PATH] \
+--num-gpus-per-model [NUM_GPUS_PER_MODEL] \
+--num-gpus-total [NUM_GPUS_TOTAL] \
+--temperature [TEMPERATURE] \
+--reference-file [REFERENCE_FILE_PATH] \
+--if-fast-eval [IF_FAST_EVAL] 
+```
+
+Arguments:
+  - `[MODEL_PATH]` is the path to the judge weights, which can be a local folder.
+  - `[MODEL_ID]` is a name you give to the judge model.
+  - `[ANSWER_FILE_PATH]` is the path to the output judgements.
+  - `[IF_FAST_EVAL]`, int, 0 or 1, represents if use the fast eval (without reasons generation).
+  - `[ANSWER_FILE_PATH]` is the path to the output judgements.
+  - `[NUM_GPUS_PER_MODEL]` is the gpu nums that used to run the judge model.
+  - `[NUM_GPUS_TOTAL]` is the total gpu nums that used to run the judge model.
+  - `[TEMPERATURE]` is the temperature used to sample the judge model.
+  - `[REFERENCE_FILE_PATH]`, is the path to the reference answers. It can be "None" if you dont need the JudgeLM make judgements with reference answers.
+  - `[IF_FAST_EVAL]`, int, 0 or 1, represents if use the fast eval (without reasons generation).
+
+e.g.,
+
+```bash
+python ./judgelm/llm_judge/gen_model_judgement_single.py \
+--model-path "/home/zhulianghui/ProjectC_ChatGPT/alpaca-quan/output/vicuna-7b-v1.3-data(judgelm-train-0628-gpt4-100k-w-reference-all-w-reference-drop)-bs128-ep3-lr2e-5-wd0.-wr0.03-cosine-mmlength2048-lazy-preprocess-swap-aug-ref_drop_ratio0.5" \
+--model-id 7b-full-model \
+--question-file ./judgelm/data/JudgeLM/judgelm-val-5k-judge-samples.jsonl \
+--answer-file /share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgements_output/JudgeLM/7b-full-model-single-ans \
+--num-gpus-per-model 1 \
+--num-gpus-total 8 \
+--temperature 0.2 \
+--reference-file /share/project/lianghuizhu/JudgeLM-Project/JudgeLM/judgelm/data/JudgeLM/judgelm_val_5k_references.jsonl \
+--if-fast-eval 1 
+```
+
+### ⭐️ Judge on JudgeLM Benchmark with a Single Script
+
+```bash
+bash ./scripts/grade_single_answer_on_judgelm_benchmark.sh 
 ```
 
 
