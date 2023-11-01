@@ -129,7 +129,7 @@ Given a question and the corresponding reference answer, JudgeLM can grade the L
 We first put the LLM-generated results json file into benchmark folder, and then preprocess the reference answer file and the LLM-generated answer file. 
 Finally, we grade single answer by JudgeLM. Furthermore, we provide a single script to run the whole process at last.
 
-### Judge on JudgeLM Benchmark Step by Step
+### Grade Single Answer on JudgeLM Benchmark Step by Step
 
 #### Step 1. Put LLM-generated results json file in benchmark folder `./judgelm/data/JudgeLM/answers`, following the format of `./judgelm/data/JudgeLM/answers/alpaca_judgelm_val.jsonl`
 
@@ -213,7 +213,7 @@ python ./judgelm/llm_judge/gen_model_judgement_single.py \
 --if-fast-eval 1 
 ```
 
-### ⭐️ Judge on JudgeLM Benchmark with a Single Script
+### ⭐️ Grade the Single Answer on JudgeLM Benchmark with a Single Script
 
 ```bash
 bash ./scripts/grade_single_answer_on_judgelm_benchmark.sh 
