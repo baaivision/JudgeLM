@@ -13,17 +13,23 @@ import json
 from judgelm.utils import extract_jsonl, save_jsonl
 
 
-def combine_judgelm_val_judge_samples(ans1_file_path, ans2_file_path):
+def combine_judgelm_val_judge_samples(ans1_file_path, ans2_file_path, ansmore_file_paths):
     # load gt_file
     ans1_dict_list = extract_jsonl(ans1_file_path)
     ans2_dict_list = extract_jsonl(ans2_file_path)
+    ansmore_dict_lists = [extract_jsonl(ansmore_file_path) for ansmore_file_path in ansmore_file_paths]
+
 
     sample_list = []
-    for (ans1_dict, ans2_dict) in zip(ans1_dict_list, ans2_dict_list):
+    for id, (ans1_dict, ans2_dict) in enumerate(zip(ans1_dict_list, ans2_dict_list)):
         assert ans1_dict['question_id'] == ans2_dict['question_id']
         i = ans1_dict['question_id']
         assert ans1_dict['question_body'] == ans2_dict['question_body']
         question_body = ans1_dict['question_body']
+        
+        for ansmore_dict in ansmore_dict_lists:
+            assert ansmore_dict[id]['question_id'] == i
+            assert ansmore_dict[id]['question_body'] == question_body
 
         sample_dict = {
             'question_id': i,
@@ -40,6 +46,13 @@ def combine_judgelm_val_judge_samples(ans1_file_path, ans2_file_path):
                 'decoding_method': ans2_dict['decoding_method'],
             }
         }
+        for index, ansmore_dict in enumerate(ansmore_dict_lists):
+            sample_dict['score'].append(ansmore_dict[id]['scores'])
+            sample_dict['answer' + str(index + 3) + '_body'] = ansmore_dict[id]['text']
+            sample_dict['answer' + str(index + 3) + '_model_id'] = ansmore_dict[id]['model']
+            sample_dict['answer' + str(index + 3) + '_metadata'] = {
+                'decoding_method': ansmore_dict[id]['decoding_method'],
+            }
         sample_list.append(sample_dict)
 
     output_path = os.path.join(os.path.dirname(os.path.dirname(ans1_file_path)), "judgelm-val-5k-judge-samples.jsonl")
@@ -76,7 +89,7 @@ if __name__ == '__main__':
                         default="/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/JudgeLM/judgelm/data/JudgeLM/answers/alpaca_judgelm_val.jsonl")
     parser.add_argument('--ans2_file_path', type=str, required=True,
                         default="/home/zhulianghui/ProjectC_ChatGPT/alpaca/reference/JudgeLM/judgelm/data/JudgeLM/answers/vicuna_judgelm_val.jsonl")
-
+    parser.add_argument('--ansmore_file_paths', type=str, nargs='+', default=[])
     args = parser.parse_args()
 
-    combine_judgelm_val_judge_samples(args.ans1_file_path, args.ans2_file_path)
+    combine_judgelm_val_judge_samples(args.ans1_file_path, args.ans2_file_path, args.ansmore_file_paths)
