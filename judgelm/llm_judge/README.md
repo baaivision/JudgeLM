@@ -224,6 +224,8 @@ JudgeLM also can grade multiple LLM-generated answers based on a given question.
 We first put the LLM-generated results json file into benchmark folder, and then preprocess the LLM-generated answer files. 
 Finally, we grade multiple answers by JudgeLM. Furthermore, we provide a single script to run the whole process at last.
 
+Note, the number of multi-answers to be judged is limited by the JudgeLM's context length (2048).
+
 ### Grade Multiple Answers on JudgeLM Benchmark Step by Step
 
 #### Step 1. Put LLM-generated results json file in benchmark folder `./judgelm/data/JudgeLM/answers`, following the format of `./judgelm/data/JudgeLM/answers/alpaca_judgelm_val.jsonl`
