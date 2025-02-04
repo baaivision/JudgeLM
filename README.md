@@ -30,7 +30,15 @@
 [Lianghui Zhu](https://github.com/Unrealluver)<sup>1,2</sup>, [Xinggang Wang](https://xwcv.github.io/)<sup>1</sup>, [Xinlong Wang](https://www.xloong.wang/)<sup>2</sup>
  
 <sup>1</sup>[HUST](https://english.hust.edu.cn/), <sup>2</sup>[BAAI](https://www.baai.ac.cn/english.html)
- 
+
+## News
+
+
+- [2025/01] JudgeLM is accepted by ICLR2025. 🎉 OpenReview page can be found [here](https://openreview.net/forum?id=xsELpEPn4A).
+
+- [2023/10] We released **JudgeLM: Fine-tuned Large Language Models are Scalable Judges**. Check out the [paper](https://arxiv.org/abs/2310.17631).
+
+
 
 ## Overview
 
@@ -49,9 +57,6 @@ JudgeLM's core features include:
 - The broad capacities to deal with extended tasks. (e.g., judges of the single answer, multimodal models,
 multiple answers, and multi-turn chat)
 - A distributed multi-model serving system with web UI.
-
-## News
-- [2023/10] We released **JudgeLM: Fine-tuned Large Language Models are Scalable Judges**. Check out the [paper](https://arxiv.org/abs/2310.17631).
 
 
 ## Contents
