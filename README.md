@@ -34,7 +34,7 @@
 ## News
 
 
-- [2025/01] JudgeLM is accepted by ICLR2025. 🎉 OpenReview page can be found [here](https://openreview.net/forum?id=xsELpEPn4A).
+- [2025/01] JudgeLM is accepted by ICLR2025, and presented as a Spotlight. 🎉 OpenReview page can be found [here](https://openreview.net/forum?id=xsELpEPn4A).
 
 - [2023/10] We released **JudgeLM: Fine-tuned Large Language Models are Scalable Judges**. Check out the [paper](https://arxiv.org/abs/2310.17631).
 
